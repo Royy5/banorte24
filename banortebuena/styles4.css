@@ -1,0 +1,237 @@
+/* Definiciones de fuentes */
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/Gotham-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/Gotham-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/Gotham-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Gotham", "Roboto";
+}
+
+
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+body{
+color: black;
+
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: #EB0029;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-family: "Gotham";
+    font-size: 35px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+
+
+.navbar a{
+    font-family: "Gotham";
+    font-size: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+color: #5B6670;
+}
+
+.home{
+    height: 100vh;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-content{
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-content h1{
+    font-size: 80px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.home-content p{
+    font-size: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.home-content .start-btn{
+    font-family: "Gotham Medium";
+    font-size: 15px;
+    width: 190px;
+    height: 45px;
+    background: white;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 4px;
+    box-shadow: #5B6670;
+    letter-spacing: 1px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.home-content .start-btn:hover{
+    box-shadow: none;
+    border: 2px solid #DB0026;
+}
+
+.popup-info{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 500px;
+    background: #EB0029;
+    border-radius: 4px;
+    padding: 10px 25px;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.3s ease;
+}
+
+.popup-info.active{
+    opacity: 1;
+    pointer-events: auto;
+
+
+}
+
+.popup-info h2{
+    font-size: 50px;
+    color: white;
+}
+
+.popup-info .info{
+    font-family: "Gotham Medium";
+    display: inline-block;
+    font-size: 15px;
+    color: white;
+    font-weight: 500;
+    margin: 4px 0;
+}
+
+.popup-info .btn-group{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid white;
+    margin-top: 10px;
+    padding: 15px 0 7px;
+}
+
+.popup-info .btn-group .info-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    height: 45px;
+    align-items: center;
+    background: #EB0029;
+    border: 2px solid, white;
+    outline: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup-info .btn-group .info-btn:nth-child(1):hover{
+    background: white;
+    color: #EB0029;
+}
+
+.popup-info .btn-group .info-btn:nth-child(2):hover{
+    background: white;
+    color: #EB0029;
+}

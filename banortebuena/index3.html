@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Gestión Financiera</title>
+<link rel="stylesheet" href="styles3.css">
+</head>
+<body>
+ <header>
+ <h1>Gestor Financiero Personal</h1>
+ <nav>
+<ul>
+ <li><a href="#gastos">Gastos Diarios</a></li>
+ <li><a href="#ingresos">Ingresos</a></li>
+ <li><a href="#presupuesto">Presupuesto Mensual</a></li>
+ <li><a href="#objetivos">Objetivos Financieros</a></li>
+ <li><a href="#deudas">Seguimiento de Deudas</a></li>
+ </ul>
+ </nav>
+ </header>
+
+ <main>
+ <section id="gastos">
+ <h2>Registro de Gastos Diarios</h2>
+ <form id="form-gastos">
+ <label for="monto-gasto">Monto del gasto:</label>
+ <input type="number" id="monto-gasto" name="monto-gasto" required>
+ <label for="descripcion-gasto">Descripción:</label>
+ <input type="text" id="descripcion-gasto" name="descripcion-gasto" required>
+
+ <label for="categoria-gasto">Categoría:</label>
+ <select id="categoria-gasto" name="categoria-gasto" required>
+ <option value="Comida">Comida</option>
+ <option value="Transporte">Transporte</option>
+ <option value="Salud">Salud</option>
+ <option value="Gym">Gym</option>
+ <option value="Ocio">Ocio</option>
+ <option value="Otros">Otros</option>
+ </select>
+<label for="fecha-gasto">Fecha:</label>
+ <input type="date" id="fecha-gasto" name="fecha-gasto" required>
+ <button type="submit">Registrar Gasto</button>
+ </form>
+</section>
+
+ <section id="ingresos">
+ <h2>Registro de Ingresos</h2>
+ <form id="form-ingresos">
+<label for="monto-ingreso">Monto del ingreso:</label>
+<input type="number" id="monto-ingreso" name="monto-ingreso" required>
+
+ <label for="descripcion-ingreso">Descripción:</label>
+ <input type="text" id="descripcion-ingreso" name="descripcion-ingreso" required>
+
+ <label for="fecha-ingreso">Fecha:</label>
+ <input type="date" id="fecha-ingreso" name="fecha-ingreso" required>
+
+<button type="submit">Registrar Ingreso</button>
+ </form>
+ </section>
+
+ <section id="presupuesto">
+ <h2>Presupuesto Mensual</h2>
+ <form id="form-presupuesto">
+ <label for="presupuesto-mensual">Presupuesto:</label>
+ <input type="number" id="presupuesto-mensual" name="presupuesto-mensual" required>
+
+ <button type="submit">Establecer Presupuesto</button>
+ </form>
+ </section>
+
+ <section id="objetivos">
+ <h2>Creación de Objetivos Financieros</h2>
+ <form id="form-objetivos">
+ <label for="nombre-objetivo">Nombre del objetivo:</label>
+<input type="text" id="nombre-objetivo" name="nombre-objetivo" required>
+
+ <label for="monto-objetivo">Monto del objetivo:</label>
+ <input type="number" id="monto-objetivo" name="monto-objetivo" required>
+
+ <button type="submit">Crear Objetivo</button>
+ </form>
+ </section>
+
+ <section id="deudas">
+ <h2>Seguimiento de Deudas</h2>
+ <form id="form-deudas">
+ <label for="nombre-deuda">Nombre de la deuda:</label>
+ <input type="text" id="nombre-deuda" name="nombre-deuda" required>
+
+ <label for="monto-deuda">Monto de la deuda:</label>
+ <input type="number" id="monto-deuda" name="monto-deuda" required>
+
+ <label for="fecha-deuda">Fecha límite de pago:</label>
+ <input type="date" id="fecha-deuda" name="fecha-deuda" required>
+
+ <button type="submit">Registrar Deuda</button>
+ </form>
+ </section>
+ </main>
+ <footer>
+ <p>&copy; 2024 Gestor Financiero Personal</p>
+ </footer>
+ <script src="script3.js"></script>
+ <div style="text-align: left; margin-top: 20px;">
+    <button onclick="window.location.href='index.html';">Regresar a la Página Principal</button>
+</div>
+</body>
+</html>

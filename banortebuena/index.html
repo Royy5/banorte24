@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+</head>
+<body>
+    <header>
+        <h1>CRECIENDO JUNTOS</h1>
+        <p>Empodera tu futuro, domina tus finanzas.</p>
+        <!-- Agrega la imagen aquí -->
+        <img src="https://images.squarespace-cdn.com/content/v1/54f3d2f6e4b080da0ca5b49f/1620224130963-OHAX2CNK35YP8WC9DZ1D/logo+banorte+gris.png" alt="Descripción de la imagen" style="width: 100px; height: auto;">
+        <div id="user-info" class="user-info"></div> 
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showContent('opcion1')">Bievenida</a></li>
+            <li><a href="#" onclick="showContent('opcion2')">Formulario</a></li>
+            <li><a href="#" onclick="showContent('opcion3')">Registro de gastos</a></li>
+            <li><a href="#" onclick="showContent('opcion4')">Simulador</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Contenido Seleccionado</h2>
+            <p id="contentMessage">Selecciona una opción del menú.</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Mi Página. Todos los derechos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <df-messenger
+      oauth-client-id="INSERT_OAUTH_CLIENT_ID"  
+      location="us-central1"
+      project-id="gcp-banorte-hackaton-team-34"
+      agent-id="84b9267c-20a1-4941-92b6-b88b6c3b195e"
+      language-code="en"
+      max-query-length="-1">
+      <df-messenger-chat-bubble
+        chat-title="duolingoBanorte">
+      </df-messenger-chat-bubble>
+    </df-messenger>
+    <style>
+      df-messenger {
+        z-index: 999;
+        position: fixed;
+        bottom: 16px;
+        right: 16px;
+      }
+    </style>
+</body>
+</html>
