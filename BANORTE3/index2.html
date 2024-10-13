@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro hábitos financieros</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body class="container">
+    
+    <h1 class="title">HÁBITOS FINANCIEROS</h1>
+    <p><b>Para continuar por favor te solicitamos que ingreses los siguientes datos: </b></p>
+
+    <form>
+        <br><label for="Income">¿Cuáles son tus ingresos mensuales (aproximado)?</label>
+        <input type="text" id="Income" name="Income" required>
+
+        <br><label for="Savings">¿Cuánto sueles ahorrar mensualmente?</label>
+        <input type="text" id="Savings" name="Savings" required>
+
+        <br><label for="SavingsObjective">¿Qué deseas adquirir o qué deseas hacer con tus ahorros?</label>
+        <input type="text" id="SavingsObjective" name="SavingsObjective" required>
+
+        <br><label>¿Sueles invertir recurrentemente?</label>
+        <label for="InvestingsYes">
+            <input type="radio" id="InvestingsYes" name="InvestingsDecision" onclick="toggleInvesting(true)" value="1" required>Sí
+        </label>
+        <label for="InvestingsNo">
+            <input type="radio" id="InvestingsNo" name="InvestingsDecision" onclick="toggleInvesting(false)" value="0" required>No
+        </label>
+        <div class="hidden" id="InvestingsAmountShow">
+            <label for="InvestingsAmount">¿Cuánto sueles invertir al mes?</label>
+            <input type="text" id="InvestingsAmount">
+        </div>
+
+        <br><label for="Debts">¿Cuánto sueles gastar en deudas?</label>
+        <input type="text" id="Debts" name="Debts" required>
+
+        <br><label for="DebtsObjective">¿Qué adquiriste o para qué utilizaste dicho préstamo?</label>
+        <input type="text" id="DebtsObjective" name="DebtsObjective" required>
+
+        <br><label>Elige la opción que mejor describe tu hogar</label>
+        <br><label for="OwnHouse">
+            <input type="radio" id="OwnHouse" name="HouseDecision" value="1" required>Casa propia
+        </label>
+        <label for="Rent">
+            <input type="radio" id="Rent" name="HouseDecision" onclick="toggleRent(true)" value="2" required>Renta
+        </label>
+        <label for="Shared">
+            <input type="radio" id="Shared" name="HouseDecision" onclick="toggleRent(false)" value="3" required>Vivienda compartida con un familiar o amigo
+        </label>
+        <div class="hidden" id="RentAmountShow">
+            <label for="RentAmount">Ingresa el pago mensual de renta:</label>
+            <input type="text" id="RentAmount">
+        </div>
+
+        <br><label for="ClothShoppingFrequency">¿Cada cuánto sueles comprar ropa?</label><br>
+        <label for="ClothShoppingFrequencyLow">
+            <input type="radio" id="ClothShoppingFrequencyLow" name="ClothShoppingFrequencyDecision" value="1" required>Menos de 2 veces al año
+        </label>
+        <label for="ClothShoppingFrequencyMiddle">
+            <input type="radio" id="ClothShoppingFrequencyMiddle" name="ClothShoppingFrequencyDecision" value="2" required>Menos de cinco veces cada 6 meses
+        </label>
+        <label for="ClothShoppingFrequencyHigh">
+            <input type="radio" id="ClothShoppingFrequencyHigh" name="ClothShoppingFrequencyDecision" value="3" required>Una o más veces al mes
+        </label>
+
+        <br><br><input type="button" onclick="exportToExcel()" value="Enviar"><br><br>
+    </form>
+
+    <script>
+        let lastSelectedInvesting = null;
+        let lastSelectedRent = null;
+
+        function toggleInvesting(show) {
+            const InvestingsAmountShow = document.getElementById('InvestingsAmountShow');
+            if (show) {
+                InvestingsAmountShow.classList.remove('hidden');
+            } else {
+                InvestingsAmountShow.classList.add('hidden');
+            }
+        }
+
+        function toggleRent(show) {
+            const RentAmountShow = document.getElementById('RentAmountShow');
+            if (show) {
+                RentAmountShow.classList.remove('hidden');
+            } else {
+                RentAmountShow.classList.add('hidden');
+            }
+        }
+
+        // Permite deseleccionar radio buttons (opcional)
+        document.querySelectorAll('input[name="InvestingsDecision"]').forEach(radio => {
+            radio.addEventListener('click', function() {
+                if (lastSelectedInvesting === this) {
+                    this.checked = false;
+                    lastSelectedInvesting = null;
+                    toggleInvesting(false);
+                } else {
+                    lastSelectedInvesting = this;
+                }
+            });
+        });
+
+        document.querySelectorAll('input[name="HouseDecision"]').forEach(radio => {
+            radio.addEventListener('click', function() {
+                if (lastSelectedRent === this) {
+                    this.checked = false;
+                    lastSelectedRent = null;
+                    toggleRent(false);
+                } else {
+                    lastSelectedRent = this;
+                }
+            });
+        });
+
+        function exportToExcel() {
+            // Recoger los datos del formulario
+            const income = document.getElementById("Income").value;
+            const savings = document.getElementById("Savings").value;
+            const savingsObjective = document.getElementById("SavingsObjective").value;
+            const investingDecision = document.querySelector('input[name="InvestingsDecision"]:checked') ? document.querySelector('input[name="InvestingsDecision"]:checked').value : null;
+            const investingAmount = investingDecision === "1" ? document.getElementById("InvestingsAmount").value : "No invierte";
+            const debts = document.getElementById("Debts").value;
+            const debtsObjective = document.getElementById("DebtsObjective").value;
+            const houseDecision = document.querySelector('input[name="HouseDecision"]:checked') ? document.querySelector('input[name="HouseDecision"]:checked').value : null;
+            const rentAmount = houseDecision === "2" ? document.getElementById("RentAmount").value : "No renta";
+            const clothShoppingFrequency = document.querySelector('input[name="ClothShoppingFrequencyDecision"]:checked').value;
+
+            if (!income || !savings || !savingsObjective || !investingDecision || !debts || !debtsObjective || !houseDecision || !clothShoppingFrequency) {
+                alert("Por favor, rellena todos los campos requeridos.");
+                return;
+            }
+
+            const data = [
+                ["Ingresos", "Ahorros", "Objetivo de Ahorro", "Invierte", "Monto de Inversión", "Deudas", "Objetivo de Deudas", "Vivienda", "Monto de Renta", "Frecuencia de Compra de Ropa"],
+                [income, savings, savingsObjective, investingDecision === "1" ? "Sí" : "No", investingAmount, debts, debtsObjective, houseDecision, rentAmount, clothShoppingFrequency]
+            ];
+
+            const ws = XLSX.utils.aoa_to_sheet(data);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Registro Financiero");
+
+            XLSX.writeFile(wb, "registro_financiero.xlsx");
+        }
+    </script>
+</body>
+
+<footer class="passive">Estos datos son recolectados para mostrarte mejores recomendaciones, no son almacenados o compartidos </footer>
+</html>
+

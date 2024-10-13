@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Página de Inicio</title>
+</head>
+<body>
+    <header>
+        <h1>Prototipo</h1>
+        <p>Empodera tu futuro, domina tus finanzas.</p>
+        <div id="user-info" class="user-info"></div> 
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showContent('opcion1')">Inicio</a></li>
+            <li><a href="#" onclick="showContent('opcion2')">Opción 2</a></li>
+            <li><a href="#" onclick="showContent('opcion3')">Opción 3</a></li>
+            <li><a href="#" onclick="showContent('opcion4')">Opción 4</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="container">
+            <h2>Contenido Seleccionado</h2>
+            <p id="contentMessage">Selecciona una opción del menú.</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Mi Página. Todos los derechos reservados.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
